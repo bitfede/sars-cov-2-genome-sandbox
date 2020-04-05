@@ -29,8 +29,21 @@ table = {
     'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
 }
 
+# store parts of the genome in variables
+sars_cov_2_5utr = sars_cov_2_g0[0:265]
+sars_cov_2_transl = sars_cov_2_g0[265:29674]
+sars_cov_2_3utr = sars_cov_2_g0[29674:29903]
+
 # check that the DNA sequence is divisible by 3
-print(sars_cov_2_g0)
-if len(sars_cov_2_g0) % 3 != 0:
+if len(sars_cov_2_transl) % 3 != 0:
     print("[!] DNA Sequence not divisible by 3")
     exit(1)
+
+# split the dna data into codons and store them into an array
+sars_cov_2_codons_arr = []
+counter = 0
+while counter < len(sars_cov_2_transl):
+    sars_cov_2_codons_arr.append(sars_cov_2_transl[counter:counter+3])
+    counter += 3
+
+print(sars_cov_2_codons_arr)
