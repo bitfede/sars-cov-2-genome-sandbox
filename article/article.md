@@ -18,7 +18,7 @@ In order to get started we need a specimen to analyze, if this was a computer vi
 
 I immediately found the full genome of the virus, which interestingly enough had a lot of samples available:
 
-![All genomes available on NCBI](/1-viralgenomes.png)
+![All genomes available on NCBI](/article/1-viralgenomes.png)
 
 I picked the MN908947 one, which was the first sample taken in Wuhan in December 2019.
 
@@ -31,7 +31,7 @@ Let's forget about COVID19 for a moment and start from the beginning, what is a 
 A virus is not an organism or a living form, but an infectious entity that enters a human or animal host and hacks its internal machinery in order to replicate itself and spread even further. As an infected host come into contact with other organisms the virus can infect them too. Picture a virus like this:
 
 [img 2]
-![The structure of the virus](/2-virus-structure.png)
+![The structure of the virus](./2-virus-structure.png)
 
 How does this happen exactly? Animal cells have an organelle called Ribosome, and what the ribosome does is creating amino acids from a piece of mRNA (messenger RNA). So as a metaphor imagine the Ribosome as a car factory, mRNA is the instructions/blueprints and the amino acids produced are the final car parts. The amino acids created by the ribosome will then be assembled together in the cell and will form a protein, just like car parts form a car when they're assembled together.
 
