@@ -30,7 +30,6 @@ Let's forget about COVID19 for a moment and start from the beginning, what is a 
 
 A virus is not an organism or a living form, but an infectious entity that enters a human or animal host and hacks its internal machinery in order to replicate itself and spread even further. As an infected host come into contact with other organisms the virus can infect them too. Picture a virus like this:
 
-[img 2]
 ![The structure of the virus](./2-virus-structure.png)
 
 How does this happen exactly? Animal cells have an organelle called Ribosome, and what the ribosome does is creating amino acids from a piece of mRNA (messenger RNA). So as a metaphor imagine the Ribosome as a car factory, mRNA is the instructions/blueprints and the amino acids produced are the final car parts. The amino acids created by the ribosome will then be assembled together in the cell and will form a protein, just like car parts form a car when they're assembled together.
@@ -225,4 +224,14 @@ Obviously I chopped the rna sequences with a "..." in order to keep the text cle
 
 ### RNA to amino acids
 
-Now that we have a clean list of genes let's translate each of them into an amino acid sequence. ...
+Now that we have a clean list of genes let's translate each of them into an amino acid sequence. Before writing any code let's go through the process of how it works.
+
+We mentioned the ribosome before, and how it produces amino acids from an RNA string. What happens specifically is that the ribosome reads three RNA bases at a time (a group of three bases is called a *codon*) and for each codon produces a certain amino acid. To know which codon corresponds to which amino acid there is a standard reference table, here's the one on wikipedia:
+
+![The RNA codon table from wikipedia](./7-rna-codon-table.png)
+
+By putting this chart into a python dictionary and by stepping through the rna sequence codon by codon the process of translation can be recreated with code. Here is my implementation of a `translate` function:
+
+```
+
+```
