@@ -232,6 +232,66 @@ We mentioned the ribosome before, and how it produces amino acids from an RNA st
 
 By putting this chart into a python dictionary and by stepping through the rna sequence codon by codon the process of translation can be recreated with code. Here is my implementation of a `translate` function:
 
+```python
+def translate(rna):
+
+    # store the codons to amino acid table
+    aa_table = {
+        'AUA':'I', 'AUC':'I', 'AUU':'I', 'AUG':'M',
+        'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACU':'T',
+        'AAC':'N', 'AAU':'N', 'AAA':'K', 'AAG':'K',
+        'AGC':'S', 'AGU':'S', 'AGA':'R', 'AGG':'R',
+        'CUA':'L', 'CUC':'L', 'CUG':'L', 'CUU':'L',
+        'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCU':'P',
+        'CAC':'H', 'CAU':'H', 'CAA':'Q', 'CAG':'Q',
+        'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGU':'R',
+        'GUA':'V', 'GUC':'V', 'GUG':'V', 'GUU':'V',
+        'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCU':'A',
+        'GAC':'D', 'GAU':'D', 'GAA':'E', 'GAG':'E',
+        'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGU':'G',
+        'UCA':'S', 'UCC':'S', 'UCG':'S', 'UCU':'S',
+        'UUC':'F', 'UUU':'F', 'UUA':'L', 'UUG':'L',
+        'UAC':'Y', 'UAU':'Y', 'UAA':'_', 'UAG':'_',
+        'UGC':'C', 'UGU':'C', 'UGA':'_', 'UGG':'W',
+    }
+
+    # check that the RNA sequence is divisible by 3 (can be split in codons)
+    if len(rna) % 3 != 0:
+        print("[!] RNA Sequence not divisible by 3")
+        exit(1)
+
+    # split the rna sequence string into codons and store them into an array
+    sars_cov_2_codons_arr = []
+    counter = 0
+    while counter < len(rna):
+        sars_cov_2_codons_arr.append(rna[counter:counter+3])
+        counter += 3
+
+    # now Translate codon by codon and return the amino acid sequence string
+    sars_cov_2_aa_raw = []
+    for codon in sars_cov_2_codons_arr:
+        sars_cov_2_aa_raw.append(aa_table[codon])
+
+    sars_cov_2_aa_raw= "".join(sars_cov_2_aa_raw)
+    return sars_cov_2_aa_raw
 ```
 
-```
+All the basic information about sats-cov-2's genome is now stored in python variables, which means that each data point is ready for custom visualization or any other type of further processing.
+
+To easily see what was just put into variables it's best to look at this image from Wikipedia:
+
+![The genomic proteins graphed by size and coordinates](./8-sarscov2-genomic-info.png)
+
+
+
+## Next ideas
+
+For sure reformatting the code so that any user can use the script to input directly from stdin the genome id and immediately get the structured data back in JSON format, so different samples of sars-cov-2 can be compared in very little time.
+
+Also would be very interesting to introduce AI into this and try to replicate some protein folding simulations. By protein folding simulations I mean computing all possible combinations in which amino acids can literally fold and assemble into a protein structure. The aim is to discover as many different structural configurations as possible because each of them may or may not reveal a particular structural component that can be targeted by an antiviral drug. To be able to reach these goals research institutions that work in bioinformatics often have computers that have very powerful hardware and are able to effortlessly crunch really big numbers.
+
+If this proves to be too complicated or difficult I will still help by donating some processing power with the folding@home initiative (https://foldingathome.org/).
+
+## Conclusions
+
+This was a simple but interesting way of getting to know this virus. Using python we can manipulate any kind of data and standardize it so that it becomes a searchable and/or processable asset.
