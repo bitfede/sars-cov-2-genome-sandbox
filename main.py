@@ -30,7 +30,7 @@ def translate(rna):
     # check that the RNA sequence is divisible by 3
     if len(rna) % 3 != 0:
         print("[!] RNA Sequence not divisible by 3")
-        # exit(1)
+        exit(1)
 
     # split the rna sequence string into codons and store them into an array
     sars_cov_2_codons_arr = []
@@ -50,8 +50,9 @@ def translate(rna):
 
 # program start
 # Read in the genome of the virus
-genomeFile = open('MN908947.3_sars-cov-2.fasta', 'r')
-sars_cov_2_g0_raw = genomeFile.read().rstrip().split("\n")
+genomeFile = requests.get('https://www.ncbi.nlm.nih.gov/sviewer/viewer.fcgi?id=MN908947.3&db=nuccore&report=fasta&retmode=text&withmarkup=on&tool=portal&log$=seqview&maxdownloadsize=1000000')
+sars_cov_2_g0_raw = genomeFile.text.rstrip().split("\n")
+
 
 sars_cov_2_g0 = {
     "description": "",
@@ -129,9 +130,9 @@ for line in split_data_ncbi:
 
 for gene in sars_cov_2_genes:
     gene['aa'] = translate(gene['rna'])
-    print("-----")
-    print(gene)
-    print("-----")
+    # print("-----")
+    # print(gene)
+    # print("-----")
 
 
 exit(0)
